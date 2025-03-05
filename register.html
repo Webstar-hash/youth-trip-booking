@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Page</title>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyC3Vbjdu5r8j8hNyUYIm1atYk5pD0gjP6g",
+      authDomain: "youth-trip-booking.firebaseapp.com",
+      databaseURL: "https://youth-trip-booking-default-rtdb.firebaseio.com",
+      projectId: "youth-trip-booking",
+      storageBucket: "youth-trip-booking.firebasestorage.app",
+      messagingSenderId: "486309306311",
+      appId: "1:486309306311:web:4c211bac63fd918fce83e2"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  </script>
+</head>
+<body>
+
+  <h2>Register for the Youth Trip</h2>
+  <form onsubmit="submitForm(); return false;">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="tel" id="phone" placeholder="Phone Number" required>
+      <button type="submit">Register</button>
+  </form>
+
+  <script>
+    function submitForm() {
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let phone = document.getElementById("phone").value;
+
+      // Store data in Firebase
+      database.ref('registrations').push({
+        name: name,
+        email: email,
+        phone: phone
+      });
+
+      alert("Registration Successful!");
+    }
+  </script>
+  
+  
+</body>
+</html>
